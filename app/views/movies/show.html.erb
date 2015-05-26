@@ -1,5 +1,5 @@
 <div class="row">
-<div class="container well">
+<div class="container">
 <div class="col-md-3">
 	<%= image_tag @movie.image.url(:medium) %>
 	<div class="star-rating" data-number=<%= @avg_review %> ></div>
@@ -20,7 +20,7 @@
 
 <div class="col-md-9">
 	<p>
-	  <strong>Description:</strong>
+	  <strong><label>Description:</label></strong> <br>
 	  <%= @movie.description %>
 	</p>
 </div>

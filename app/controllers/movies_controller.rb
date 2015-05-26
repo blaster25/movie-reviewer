@@ -3,6 +3,7 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :destroy]
   # GET /movies
   # GET /movies.json
+  
   def index
    if params[:query].present?
       @movies = Movie.search(params[:query])

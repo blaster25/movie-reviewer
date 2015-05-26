@@ -3,7 +3,7 @@
 <%= form_for([@movie, @review], html: { multipart: true }) do |f| %>
   
   <div>
-    <div id="star-rating" > </div>
+    <div id="star-rating" data-number=<%= @review.rating %> > </div>
   </div>
 
   
@@ -19,9 +19,14 @@
 <script>
   $('#star-rating').raty( {
     path: '/assets/',
+    score: function ( ) {
+      return $(this).attr('data-number');
+    },
     scoreName: 'review[rating]'
+
   })
 </script>
+
 
 <%#= render 'reviews/form' %>
 

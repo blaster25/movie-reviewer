@@ -49,6 +49,7 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
            <% if user_signed_in? %>
                 <ul class="nav navbar-nav navbar-right">
+                  <li><div><%= form_tag movies_path, class: "navbar-form form-inline", method: :get do text_field_tag :query, nil, class: 'form-control', placeholder: 'Quick Search...' end %></div></li>
                     <li><%= link_to "Hello, #{current_user.username} !" %></li>
                     <li><%= link_to "New Movie", new_movie_path %></li>
                     <li><%= link_to "Account ", edit_user_registration_path %></li>
@@ -56,6 +57,9 @@
                 </ul>
             <% else %>
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                      <%= form_tag movies_path, class: "navbar-form form-inline", method: :get do text_field_tag :query, nil, class: 'form-control', placeholder: 'Quick Search...' end %>
+                    </li>
                     <li><%= link_to "Sign up", new_user_registration_path %></li>
                     <li><%= link_to "Sign in", new_user_session_path %></li>
                 </ul>

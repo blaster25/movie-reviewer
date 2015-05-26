@@ -1,5 +1,4 @@
 <h1 class="text-center">Listing Movies</h1>
-<%= form_tag movies_path, class: "form-inline", method: :get do text_field_tag :query, nil, class: 'form-control', placeholder: 'Search movies...' end %>
 
 <% @movies.each do |movie| %>
     <div class="col-md-4">
