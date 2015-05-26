@@ -1,0 +1,66 @@
+<div class="row">
+<div class="container well">
+<div class="col-md-3">
+	<%= image_tag @movie.image.url(:medium) %>
+	<div class="star-rating" data-number=<%= @avg_review %> ></div>
+	<%= @avg_review %>
+	<p>
+	  <strong>Title:</strong>
+	  <%= @movie.title %>
+	</p>
+	<p>
+	  <strong>Duration:</strong>
+	  <%= @movie.duration %>
+	</p>
+	<p>
+	  <strong>Director:</strong>
+	  <%= @movie.director %>
+	</p>
+</div>
+
+<div class="col-md-9">
+	<p>
+	  <strong>Description:</strong>
+	  <%= @movie.description %>
+	</p>
+</div>
+</div>
+
+<div class="container">
+
+<h1><%= (@movie.reviews.length > 0) ? "Reviews  #{@movie.reviews.length}" : "No Review"  %></h1>
+
+<% @movie.reviews.reverse.each do |review| %>
+<div class="col-md-12 well" >
+	<ul class="list-unstyled">
+		<%= image_tag review.user.avatar.url(:thumb2) %> <%= review.user.email %></li>
+		<div class="star-rating" data-number= <%= review.rating %> ></div>
+		<li><%= review.comment %></li> 
+		<% if current_user == review.user  %> 
+			<%= link_to 'Edit', edit_movie_review_path(@movie,review) %>
+		<% end %>
+		<li><%= time_ago_in_words(review.created_at) %></li>
+	</ul>
+</div>
+<% end %>
+
+
+<% if current_user %>
+<div class="col-md-12 well">
+	<%= render partial: 'reviews/new' %>
+	<%= link_to 'Edit', edit_movie_path(@movie) %> |
+	<%= link_to 'Back', movies_path %>
+</div>
+<% end %>
+</div>
+</div> <!-- end of row -->
+
+<script>
+	$('.star-rating').raty({
+		path: '/assets/',
+		readOnly: true,
+		score: function ( ) {
+			return $(this).attr('data-number');
+		}
+	})
+</script>

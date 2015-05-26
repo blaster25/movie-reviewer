@@ -1,0 +1,15 @@
+/*.mytile {
+    background: #2672EC;
+
+	:hover {
+		background: darken(#2672EC, 10%);
+	}		
+ }*/
+
+/*.imgwrapper {
+	height: 100px;
+}*/
+
+body {
+	background-color: yellow!;
+}

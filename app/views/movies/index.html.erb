@@ -1,0 +1,43 @@
+
+
+<h1 class="text-center">Listing Movies</h1>
+
+<% @movies.each do |movie| %>
+    <div class="col-md-4">
+      <div class="title text-center">
+        <h3 class="title "> <%= movie.title.truncate(20) %></h3>
+        <div class="imgwrapper" >
+          <%= link_to image_tag(movie.image.url(:medium)), movie %>
+        </div>
+        <p>
+          <label>Description: </label>
+          <%= truncate(movie.description) %>
+        </p>
+        <p>
+          <label>Duration: </label>
+          <%= movie.duration %>
+        </p>
+        <p>
+          <label>Director: </label>
+          <%= movie.director %>
+        </p>
+        <p>
+          <%= link_to (movie.reviews.length > 0) ? "Reviews  #{movie.reviews.length}" : "No Review", movie, :class => "btn btn-info" %>
+          <% if current_user %>
+            <%= link_to 'Edit', edit_movie_path(movie), :class => "btn btn-primary" %>
+            <%= link_to 'Delete', movie, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-warning" %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+<% end %>
+
+<script>
+  $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function ( ) {
+      return $(this).attr('data-number');
+    }
+  })
+</script>
