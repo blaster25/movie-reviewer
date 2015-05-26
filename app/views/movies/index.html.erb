@@ -1,6 +1,5 @@
-
-
 <h1 class="text-center">Listing Movies</h1>
+<%= form_tag movies_path, class: "form-inline", method: :get do text_field_tag :query, nil, class: 'form-control', placeholder: 'Search movies...' end %>
 
 <% @movies.each do |movie| %>
     <div class="col-md-4">
@@ -8,6 +7,7 @@
         <h3 class="title "> <%= movie.title.truncate(20) %></h3>
         <div class="imgwrapper" >
           <%= link_to image_tag(movie.image.url(:medium)), movie %>
+          <div class="star-rating" data-number=<%= movie.reviews.average(:rating) %> ></div>
         </div>
         <p>
           <label>Description: </label>

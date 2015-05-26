@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    if params[:query].present?
+   if params[:query].present?
       @movies = Movie.search(params[:query])
     else
       @movies = Movie.all
@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
     if @reviews.blank?
       @avg_review = 0
     else
-      @avg_review = @reviews.average(:rating).round
+      @avg_review = @reviews.average(:rating)
     end
   end
 
