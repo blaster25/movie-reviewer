@@ -7,6 +7,12 @@ p, h1, label {
 	color: #cccccc !important;
 }
 
+.review-wrapper {
+	/*width: 150px;*/
+    height: 500px;
+    overflow: scroll;
+}
+
 .reg-form {
 	padding: 3% 5% 5% 5%;
 	border-style: solid;
@@ -39,6 +45,7 @@ p, h1, label {
 .movie-wrapper {
 	clear: both;
 }
+
 .my-forms {
 	margin: 0 auto; 
 }

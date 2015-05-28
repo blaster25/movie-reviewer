@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="col-md-3">
 			<%= image_tag @movie.image.url(:medium) %>
-			<div class="star-rating" data-number=<%= @avg_review %> ></div>
+			<div class="star-rating-show" data-number=<%= @avg_review %> ></div>
 			<p>
 			  <strong>Title:</strong>
 			  <%= @movie.title %>
@@ -22,43 +22,48 @@
 		</div>
 	</div>
 
-	<div class="container">
-		<h1><%= (@movie.reviews.length > 0) ? "Reviews  #{@movie.reviews.length}" : "No Review"  %></h1>
-		<% @movie.reviews.order( :created_at ).reverse.each do |review| %>
-		<div class="col-md-12 well" >
-			<div class="col-md-1">
-				<%= image_tag review.user.avatar.url(:thumb2) %> 
+	<% if @movie.reviews.length > 0 %>
+		<h1><%= "Reviews  #{@movie.reviews.length}" %></h1>
+		<div class="review-wrapper">
+			<% @movie.reviews.order( :created_at ).reverse.each do |review| %>
+			<div class="col-sm-12 well" >
+				<div class="col-md-1">
+					<%= image_tag review.user.avatar.url(:thumb2) %> 
+				</div>
+				<div class="col-sm-11">
+					<h4><%= review.user.email %></h4>
+					<div class="star-rating-show" data-number= <%= review.rating %> ></div>
+					<br>
+					<%= review.comment %> 
+					<br> <br>
+					<% if current_user == review.user  %> 
+						<%= link_to 'Edit', edit_movie_review_path(@movie,review) %> |
+					<% end %>
+					<%= time_ago_in_words(review.created_at) %>
+				</div>
 			</div>
-			<div class="col-md-11">
-				<h4><%= review.user.email %></h4>
-				<div class="star-rating" data-number= <%= review.rating %> ></div>
-				<br>
-				<%= review.comment %> 
-				<br> <br>
-				<% if current_user == review.user  %> 
-					<%= link_to 'Edit', edit_movie_review_path(@movie,review) %> |
-				<% end %>
-				<%= time_ago_in_words(review.created_at) %>
-			</div>
+			<% end %>
 		</div>
-		<% end %>
+	<%  else %>
+		<h1 class="text-center"> No Reviews yet </h1>
+		<h2 class="text-center">Be the first to make a review !!</h2>
+	<% end %>
 
-		<% if current_user %>
+	<% if current_user %>
 		<div class="col-md-12 form">
 			<%= render partial: 'reviews/new' %>
 			<%= link_to 'Edit', edit_movie_path(@movie) %> |
 			<%= link_to 'Back', movies_path %>
 		</div>
-		<% end %>
-	</div>
+	<% end %>
 </div> <!-- end of row -->
 
 <script>
-	$('.star-rating').raty({
-		path: '/assets/',
-		readOnly: true,
-		score: function ( ) {
-			return $(this).attr('data-number');
-		}
-	})
+	// $('.star-rating').raty({
+	// 	path: '/assets/',
+	// 	readOnly: true,
+	// 	score: function ( ) {
+	// 		return $(this).attr('data-number');
+	// 	}
+	// })
 </script>

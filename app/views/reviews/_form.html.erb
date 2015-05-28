@@ -3,7 +3,7 @@
   <div ><%= image_tag current_user.avatar.url(:thumb2) %></div>
 
   <div>
-    <div id="star-rating" > </div>
+    <div id="star-rating-form" > </div>
   </div>
 
   
@@ -18,8 +18,8 @@
 <% end %>
 
 <script>
-  $('#star-rating').raty( {
-    path: '/assets/',
-    scoreName: 'review[rating]'
-  })
+  // $('#star-rating').raty( {
+  //   path: '/assets/',
+  //   scoreName: 'review[rating]'
+  // })
 </script>

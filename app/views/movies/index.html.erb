@@ -6,7 +6,7 @@
           <h3 class="title"> <%= movie.title.truncate(20) %></h3>
           <p>
             <%= link_to image_tag(movie.image.url(:medium)), movie %>
-            <div class="star-rating" data-number=<%= movie.reviews.average(:rating) %> ></div>
+            <div class="star-rating-index" data-number=<%= movie.reviews.average(:rating) %> ></div>
           </p>
           <p>
             <label>Run Time: </label>
@@ -30,11 +30,11 @@
 </div>
 
 <script>
-  $('.star-rating').raty({
-    path: '/assets/',
-    readOnly: true,
-    score: function ( ) {
-      return $(this).attr('data-number');
-    }
-  })
+  // $('.star-rating-index').raty({
+  //   path: '/assets/',
+  //   readOnly: true,
+  //   score: function ( ) {
+  //     return $(this).attr('data-number');
+  //   }
+  // })
 </script>
