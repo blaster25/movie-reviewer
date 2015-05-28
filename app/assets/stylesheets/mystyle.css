@@ -1,19 +1,37 @@
-/*.mytile {
-    background: #2672EC;
-
-	:hover {
-		background: darken(#2672EC, 10%);
-	}		
- }*/
-
-/*.imgwrapper {
-	height: 100px;
-}*/
 
 body {
-	background-color: yellow!;
+	background-color: #000 !important;
+}
+
+p, h1, label {
+	color: #cccccc !important;
+}
+
+.reg-form {
+	padding: 3% 5% 5% 5%;
+	border-style: solid;
+	border-radius: 50px;
+	background: rgba(100, 100, 100, .1);
+}
+
+.form {
+	border-radius: 15px;
+	background: rgba(100, 100, 100, .1);
+}
+
+.title {
+	color: #cccccc;
+}
+
+.movie-prev {
+	background: rgba(100, 100, 100, .1); 
+	border-radius: 15px; 
+	padding: 5% 5% 5% 5%;
+	margin-top: 1cm;
+	border-style: solid;
 }
 
 .my-forms {
 	margin: 0 auto; 
 }
+

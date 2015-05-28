@@ -1,6 +1,6 @@
 class Movie < ActiveRecord::Base
 	#for seach elasticsearch
-	searchkick
+	searchkick word_start: [:title, :director]
 
 	validates :title, presence: true, length: { minimum: 5, maximum: 50 }
 	validates :description, presence: true

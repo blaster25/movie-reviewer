@@ -6,9 +6,9 @@ class MoviesController < ApplicationController
   
   def index
    if params[:query].present?
-      @movies = Movie.search(params[:query])
+      @movies = Movie.paginate(:per_page => 3, :page => params[:page]).search(params[:query])
     else
-      @movies = Movie.all
+      @movies = Movie.paginate(:per_page => 3, :page => params[:page])
     end
   end
 

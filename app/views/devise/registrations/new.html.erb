@@ -1,6 +1,5 @@
-<div class="container well">
-  <div align="center" >
-    <h2>Sign up</h2>
+<div class="reg-form">
+    <h1 class="text-center">Sign up</h1>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { :multipart => true }) do |f| %>
       <%= devise_error_messages! %>
@@ -39,5 +38,4 @@
     <% end %>
 
     <%= render "devise/shared/links" %>
-  </div>
 </div>
