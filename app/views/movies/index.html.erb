@@ -1,6 +1,6 @@
 <div align="center">
-  <h1>Movies</h1>
-  <% @movies.order(:created_at).reverse.each do |movie| %>
+  <h1>List of Movies</h1>
+  <% @movies.each do |movie| %>
       <div class="col-md-4">
         <div class="movie-prev">
           <h3 class="title"> <%= movie.title.truncate(20) %></h3>
@@ -16,17 +16,17 @@
             <label>Director: </label>
             <%= movie.director %>
           </p>
-          <p>
-            <%= link_to (movie.reviews.length > 0) ? "Reviews  #{movie.reviews.length}" : "No Review", movie, :class => "btn btn-info" %>
-            <% if current_user %>
-              <%= link_to 'Edit', edit_movie_path(movie), :class => "btn btn-primary" %>
-              <%= link_to 'Delete', movie, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-warning" %>
-            <% end %>
-          </p>
+          <p><%= link_to (movie.reviews.length > 0) ? "Review  #{movie.reviews.length}" : "No Review", movie, :class => "form-control btn btn-info" %></p>
+          <% if current_user %>
+            <p><%= link_to 'Edit', edit_movie_path(movie), :class => "form-control btn btn-info" %></p>
+            <p><%= link_to 'Delete', movie, method: :delete, data: { confirm: 'Are you sure?' }, :class => " form-control btn btn-warning" %></p>
+          <% end %>
         </div>
       </div>
   <% end %>
+  <div class="movie-wrapper">
   <%= will_paginate @movies, renderer: BootstrapPagination::Rails %>
+  </div>
 </div>
 
 <script>

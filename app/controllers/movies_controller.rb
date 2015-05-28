@@ -8,7 +8,8 @@ class MoviesController < ApplicationController
    if params[:query].present?
       @movies = Movie.paginate(:per_page => 3, :page => params[:page]).search(params[:query])
     else
-      @movies = Movie.paginate(:per_page => 3, :page => params[:page])
+      @movies = Movie.paginate(:per_page => 3, :page => params[:page]).order("created_at DESC")
+
     end
   end
 

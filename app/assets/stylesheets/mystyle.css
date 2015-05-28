@@ -31,6 +31,14 @@ p, h1, label {
 	border-style: solid;
 }
 
+.devise-helper {
+	text-decoration: underline;
+	color: #cccccc !important;
+}
+
+.movie-wrapper {
+	clear: both;
+}
 .my-forms {
 	margin: 0 auto; 
 }
