@@ -1,6 +1,6 @@
 <%= form_for([@movie, @movie.reviews.new]) do |f| %>
   
-  <div ><%= image_tag current_user.avatar.url(:thumb2) %></div>
+  <div ><%= image_tag current_user.avatar.url(:thumb2),class: "img-circle" %></div>
 
   <div>
     <div id="star-rating-form" > </div>
@@ -16,10 +16,3 @@
     <%= f.submit :class =>"btn btn-primary"  %>
   </div>
 <% end %>
-
-<script>
-  // $('#star-rating').raty( {
-  //   path: '/assets/',
-  //   scoreName: 'review[rating]'
-  // })
-</script>

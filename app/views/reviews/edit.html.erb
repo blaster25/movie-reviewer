@@ -1,32 +1,19 @@
-<h1>Editing Review</h1>
+<div class="reg-form" >
+  <h1>Editing Review</h1>
 
-<%= form_for([@movie, @review], html: { multipart: true }) do |f| %>
-  
-  <div>
-    <div id="star-rating" data-number=<%= @review.rating %> > </div>
-  </div>
+  <%= form_for([@movie, @review], html: { multipart: true }) do |f| %>
+    
+    <div>
+      <div id="star-rating-edit" data-number=<%= @review.rating %> > </div>
+    </div>
 
-  
-  <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-<script>
-  // $('#star-rating').raty( {
-  //   path: '/assets/',
-  //   score: function ( ) {
-  //     return $(this).attr('data-number');
-  //   },
-  //   scoreName: 'review[rating]'
-  // })
-</script>
-
-
-<%#= render 'reviews/form' %>
-
-
+    
+    <div class="field">
+      <%= f.label :comment %><br>
+      <%= f.text_area :comment %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

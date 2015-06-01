@@ -7,6 +7,10 @@ p, h1, label {
 	color: #cccccc !important;
 }
 
+input {
+	font-family: FontAwesome !important;
+}
+
 .review-wrapper {
 	/*width: 150px;*/
     height: 500px;
@@ -37,12 +41,16 @@ p, h1, label {
 	border-style: solid;
 }
 
-.devise-helper {
-	text-decoration: underline;
-	color: #cccccc !important;
+.profile-avatar {
+	border-radius: 50px; 
 }
 
-.movie-wrapper {
+.devise-helper {
+	text-decoration: underline;
+	color: #cccccc;
+}
+
+.paginate-wrapper {
 	clear: both;
 }
 

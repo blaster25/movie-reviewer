@@ -5,7 +5,8 @@ class Movie < ActiveRecord::Base
 	validates :title, presence: true, length: { minimum: 5, maximum: 50 }
 	validates :description, presence: true
 	validates :director, presence: true
-	validates :duration, presence: true, numericality: true
+	# validates :duration, presence: true, numericality: true
+	validates :duration, presence: true, format: { with: /\A\d{1,2}:\d{1,2}\Z/, message: ":only time ralated expressions can be used !!" }
 	
 	belongs_to :user
 	has_many :reviews

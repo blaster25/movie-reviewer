@@ -1,15 +1,5 @@
-$( document ).ready(function() {
-   
-   alert("hahahaahha");
 
-	//movie index
-	$('.star-rating-index').raty({
-		path: '/assets/',
-		readOnly: true,
-		score: function ( ) {
-			return $(this).attr('data-number');
-		}
-	})
+$(document).on('ready page:load', function () {
 
 	// movie show
 	$('.star-rating-show').raty({
@@ -33,6 +23,8 @@ $( document ).ready(function() {
 	      return $(this).attr('data-number');
 	    },
 	    scoreName: 'review[rating]'
-  })
+  	})
 
 });
+
+// $(document).on('page:load', ready);

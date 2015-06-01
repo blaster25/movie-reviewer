@@ -24,11 +24,11 @@
 
 	<% if @movie.reviews.length > 0 %>
 		<h1><%= "Reviews  #{@movie.reviews.length}" %></h1>
-		<div class="review-wrapper">
+		<div class="<%= @movie.reviews.length > 3 ? 'review-wrapper' : nil %>">
 			<% @movie.reviews.order( :created_at ).reverse.each do |review| %>
 			<div class="col-sm-12 well" >
 				<div class="col-md-1">
-					<%= image_tag review.user.avatar.url(:thumb2) %> 
+					<%= image_tag review.user.avatar.url(:thumb2), class: "img-circle" %> 
 				</div>
 				<div class="col-sm-11">
 					<h4><%= review.user.email %></h4>
@@ -36,7 +36,8 @@
 					<br>
 					<%= review.comment %> 
 					<br> <br>
-					<% if current_user == review.user  %> 
+					<% if current_user == review.user  %>
+						<%= link_to 'Delete', movie_review_path(@movie, review), method: :delete %> | 
 						<%= link_to 'Edit', edit_movie_review_path(@movie,review) %> |
 					<% end %>
 					<%= time_ago_in_words(review.created_at) %>
@@ -57,13 +58,3 @@
 		</div>
 	<% end %>
 </div> <!-- end of row -->
-
-<script>
-	// $('.star-rating').raty({
-	// 	path: '/assets/',
-	// 	readOnly: true,
-	// 	score: function ( ) {
-	// 		return $(this).attr('data-number');
-	// 	}
-	// })
-</script>

@@ -11,11 +11,16 @@ class User < ActiveRecord::Base
 
   #devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
-    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable,
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable,
          :validatable, :authentication_keys => [:login]
-
+  
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#", :thumb2 => "50x50>" }
+  
   validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
 
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+  
   def self.find_first_by_auth_conditions(warden_conditions)
 	  conditions = warden_conditions.dup
 	  if login = conditions.delete(:login)
@@ -29,8 +34,6 @@ class User < ActiveRecord::Base
 	  end
 	end
   
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100#", :thumb2 => "50x50>" }
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-
-  validates_attachment :avatar, :presence => true
+  
+  # validates_attachment :avatar, :presence => true
 end

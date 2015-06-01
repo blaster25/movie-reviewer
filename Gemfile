@@ -55,6 +55,7 @@ group :development, :test do
   gem 'less-rails'
   gem 'twitter-bootstrap-rails'
   gem 'will_paginate-bootstrap'
-
+  gem "font-awesome-rails"
+  
 end
 
