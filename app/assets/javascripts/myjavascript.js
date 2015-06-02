@@ -26,5 +26,3 @@ $(document).on('ready page:load', function () {
   	})
 
 });
-
-// $(document).on('page:load', ready);
