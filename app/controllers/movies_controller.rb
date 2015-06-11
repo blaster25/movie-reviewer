@@ -74,6 +74,11 @@ class MoviesController < ApplicationController
     end
   end
 
+  #RESTFUL APIS
+  def fetch_movies
+    render json: Movie.all.to_json( :methods => [:image_url] ) , status: :ok
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movie

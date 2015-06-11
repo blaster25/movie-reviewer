@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
 
   root 'movies#index'
+
+  get '/api/movies/all' => 'movies#fetch_movies'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
