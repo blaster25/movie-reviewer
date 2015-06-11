@@ -26,7 +26,8 @@
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application"  %>
+    <%= javascript_include_tag "jquery.raty.js", "data-turbolinks-track" => false %>
   </head>
   <body>
     <!-- (bg color start here) -->
